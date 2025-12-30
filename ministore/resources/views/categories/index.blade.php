@@ -1,45 +1,45 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center max-w-4xl mx-auto">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <div class="header flex justify-between items-center max-w-4xl mx-auto p-6">
+            <h2 class="header-title">
                 {{ __('Gestion des Catégories') }}
             </h2>
-            <a href="{{ route('categories.create') }}" class="bg-indigo-600 text-black px-4 py-2 rounded-md text-sm font-bold hover:bg-indigo-700 transition">
+            <a href="{{ route('categories.create') }}" class="btn-primary text-white">
                 + Ajouter une Catégorie
             </a>
         </div>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-12 body-bg">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border border-gray-200">
+            <div class="card-white">
                 <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
+                    <thead class="table-header">
                         <tr>
-                            <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
+                            <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider">
                                 NOM DE LA CATÉGORIE
                             </th>
-                            <th class="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">
+                            <th class="px-6 py-4 text-right text-xs font-bold uppercase tracking-wider">
                                 ACTIONS
                             </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-100">
                         @forelse($categories as $category)
-                        <tr class="hover:bg-gray-50 transition-colors">
+                        <tr class="hover:bg-indigo-50 transition-colors duration-200">
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                 {{ $category->name }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="flex justify-end space-x-4">
-                                    <a href="{{ route('categories.edit', $category->id) }}" class="text-indigo-600 hover:text-indigo-900 font-bold">
+                                    <a href="{{ route('categories.edit', $category->id) }}" class="text-indigo-600 hover:text-indigo-900 font-bold transition-colors">
                                         Modifier
                                     </a>
                                     
-                                    <form action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Supprimer cette catégorie ?')">
+                                    <form action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Supprimer cette catégorie ?')" class="inline">
                                         @csrf 
                                         @method('DELETE')
-                                        <button type="submit" class="text-red-500 hover:text-red-700 font-bold">
+                                        <button type="submit" class="text-red-500 hover:text-red-700 font-bold transition-colors">
                                             Supprimer
                                         </button>
                                     </form>

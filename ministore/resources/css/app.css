@@ -3,11 +3,126 @@
 @tailwind utilities;
 
 @layer components {
+  /* Bouton principal élégant avec effet hover et shadow */
   .btn-primary {
-    @apply bg-indigo-600 text-white px-6 py-2 rounded-xl font-bold hover:bg-indigo-700 transition duration-300 shadow-lg;
+    @apply bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-2xl font-bold 
+           hover:from-indigo-700 hover:to-purple-700 hover:scale-105 transition transform duration-300 shadow-lg;
   }
-  
+
+  /* Carte blanche avec bordure douce, shadow élégant et effet hover */
   .card-white {
-    @apply bg-white shadow-xl rounded-3xl border border-gray-100 overflow-hidden;
+    @apply bg-white rounded-3xl border border-gray-100 overflow-hidden
+           shadow-md hover:shadow-2xl hover:scale-105 transition-all duration-300;
+  }
+
+  /* Sidebar liens actif/inactif avec gradient subtil */
+  .sidebar-link {
+    @apply flex items-center px-4 py-3 text-sm font-medium rounded-lg 
+           text-gray-700 hover:bg-indigo-100 hover:text-indigo-800 transition-colors duration-200;
+  }
+
+  .sidebar-link-active {
+    @apply bg-gradient-to-r from-indigo-200 to-indigo-100 text-indigo-900 font-semibold;
+  }
+
+  /* Dropdown profil élégant */
+  .dropdown-link {
+    @apply block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200;
+  }
+
+  /* Header du dashboard avec fond subtil */
+  .header {
+    @apply bg-indigo-50 shadow-lg border-b border-gray-200;
+  }
+
+  /* Body général plus lumineux avec gradient */
+  /* .body-bg {
+    @apply bg-gradient-to-b from-indigo-50 via-white to-white;
+  } */
+
+  /* Sidebar background avec gradient plus coloré */
+  .sidebar-bg {
+    @apply bg-gradient-to-br from-indigo-50 via-purple-50 to-white;
+  }
+
+  /* Titres élégants avec style moderne et fond dégradé violet-bleu */
+  .header-title {
+    @apply text-3xl font-black text-white tracking-wide bg-gradient-to-r from-purple-500 to-blue-500 px-6 py-3 rounded-full shadow-lg border-2 border-purple-300;
+  }
+
+  /* Petits cards statistiques stylés */
+  .stat-card {
+    @apply card-white flex items-center p-6 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl;
+  }
+
+  .stat-icon {
+    @apply p-4 rounded-xl text-2xl;
+  }
+
+  .stat-text-small {
+    @apply text-xs font-bold text-gray-600 uppercase tracking-wider;
+  }
+
+  /* Texte large des stats plus stylé et plus grand avec gradient et effets */
+  .stat-text-large {
+    @apply text-4xl font-black bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent uppercase tracking-wider drop-shadow-lg;
+  }
+
+  /* Animation légère pour les icônes */
+  .icon-hover:hover {
+    @apply animate-bounce;
+  }
+
+  /* Table header premium */
+  .table-header {
+    @apply bg-gradient-to-r from-indigo-500 to-purple-600 text-white;
+  }
+
+  /* Formulaire de création stylé avec fond subtil et bordures arrondies */
+  .create-form {
+    @apply bg-gradient-to-br from-white to-indigo-50 p-8 rounded-3xl shadow-lg border border-gray-200;
+  }
+
+  /* Champs d'entrée élégants avec focus et transitions */
+  .create-input {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-white shadow-sm;
+  }
+
+  /* Labels pour les champs de formulaire */
+  .create-label {
+    @apply block text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wider;
+  }
+
+  /* Bouton de soumission pour création */
+  .create-submit-btn {
+    @apply btn-primary w-full py-3 text-lg font-bold hover:scale-105;
+  }
+
+  /* Bouton d'annulation stylé */
+  .create-cancel-btn {
+    @apply bg-gray-200 text-gray-700 px-6 py-2 rounded-xl font-medium hover:bg-gray-300 transition-colors duration-200;
+  }
+
+  /* Conteneur pour les boutons d'action */
+  .create-actions {
+    @apply flex justify-end space-x-4 mt-6;
+  }
+}
+@layer utilities {
+  /* Utility pour les ombres personnalisées */
+  .shadow-sm {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .shadow-md {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .shadow-lg {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .shadow-2xl {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
   }
 }

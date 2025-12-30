@@ -1,51 +1,53 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight italic">
-            Tableau de Bord
-        </h2>
+        <div class="header max-w-7xl mx-auto p-6">
+            <h2 class="header-title">
+                Tableau de Bord
+            </h2>
+        </div>
     </x-slot>
 
-    <div class="py-12 bg-gray-50 min-h-screen">
+    <div class="py-12 body-bg min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center hover:shadow-md transition">
-                    <div class="p-4 bg-green-50 rounded-xl mr-4">
+                <div class="card-white p-6 flex items-center">
+                    <div class="p-4 bg-gradient-to-br from-green-100 to-green-200 rounded-xl mr-4">
                         <span class="text-2xl text-green-600">💰</span>
                     </div>
                     <div>
-                        <p class="text-xs font-bold text-gray-1000 uppercase tracking-wider">Revenu Total</p>
+                        <p class="text-xs font-bold text-gray-600 uppercase tracking-wider">Revenu Total</p>
                         <p class="text-xl font-black text-gray-800">{{ number_format($stats['total_revenue'], 2) }} DH</p>
                     </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center hover:shadow-md transition">
-                    <div class="p-4 bg-blue-50 rounded-xl mr-4">
+                <div class="card-white p-6 flex items-center">
+                    <div class="p-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl mr-4">
                         <span class="text-2xl text-blue-600">📦</span>
                     </div>
                     <div>
-                        <p class="text-xs font-bold text-gray-1000 uppercase tracking-wider">Commandes</p>
+                        <p class="text-xs font-bold text-gray-600 uppercase tracking-wider">Commandes</p>
                         <p class="text-xl font-black text-gray-800">{{ $stats['orders_count'] }}</p>
                     </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center hover:shadow-md transition">
-                    <div class="p-4 bg-orange-50 rounded-xl mr-4">
+                <div class="card-white p-6 flex items-center">
+                    <div class="p-4 bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl mr-4">
                         <span class="text-2xl text-orange-600">🏷️</span>
                     </div>
                     <div>
-                        <p class="text-xs font-bold text-gray-1000 uppercase tracking-wider">Produits</p>
+                        <p class="text-xs font-bold text-gray-600 uppercase tracking-wider">Produits</p>
                         <p class="text-xl font-black text-gray-800">{{ $stats['products_count'] }}</p>
                     </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center hover:shadow-md transition">
-                    <div class="p-4 bg-purple-50 rounded-xl mr-4">
+                <div class="card-white p-6 flex items-center">
+                    <div class="p-4 bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl mr-4">
                         <span class="text-2xl text-purple-600">👥</span>
                     </div>
                     <div>
-                        <p class="text-xs font-bold text-gray-1000 uppercase tracking-wider">Clients</p>
+                        <p class="text-xs font-bold text-gray-600 uppercase tracking-wider">Clients</p>
                         <p class="text-xl font-black text-gray-800">{{ $stats['clients_count'] }}</p>
                     </div>
                 </div>
@@ -61,3 +63,4 @@
         </div>
     </div>
 </x-app-layout>
+
