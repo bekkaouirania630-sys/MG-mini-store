@@ -10,57 +10,73 @@
     <div class="py-12 body-bg min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                 
-                <div class="card-white p-6 flex items-center">
-                    <div class="p-4 bg-gradient-to-br from-green-100 to-green-200 rounded-xl mr-4">
-                        <span class="text-2xl text-green-600">💰</span>
-                    </div>
-                    <div>
-                        <p class="text-xs font-bold text-gray-600 uppercase tracking-wider">Revenu Total</p>
-                        <p class="text-xl font-black text-gray-800">{{ number_format($stats['total_revenue'], 2) }} DH</p>
-                    </div>
-                </div>
-
-                <div class="card-white p-6 flex items-center">
-                    <div class="p-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl mr-4">
-                        <span class="text-2xl text-blue-600">📦</span>
-                    </div>
-                    <div>
-                        <p class="text-xs font-bold text-gray-600 uppercase tracking-wider">Commandes</p>
-                        <p class="text-xl font-black text-gray-800">{{ $stats['orders_count'] }}</p>
+                <!-- Card Revenu -->
+                <div class="relative overflow-hidden bg-gradient-to-br from-green-400 to-emerald-600 rounded-3xl p-8 shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+                    <div class="absolute -right-6 -top-6 text-9xl opacity-20 rotate-12 select-none">💰</div>
+                    <div class="relative z-10 flex flex-col justify-between h-full text-white">
+                        <div>
+                            <p class="text-sm font-black uppercase tracking-widest opacity-80 mb-2">Revenu Total</p>
+                            <h3 class="text-5xl font-black drop-shadow-md">{{ number_format($stats['total_revenue'], 2) }} <span class="text-3xl">DH</span></h3>
+                        </div>
+                        <div class="mt-6 flex items-center gap-2 opacity-90 font-bold">
+                            <span class="bg-white/20 p-2 rounded-lg">📈 +12% ce mois</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="card-white p-6 flex items-center">
-                    <div class="p-4 bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl mr-4">
-                        <span class="text-2xl text-orange-600">🏷️</span>
-                    </div>
-                    <div>
-                        <p class="text-xs font-bold text-gray-600 uppercase tracking-wider">Produits</p>
-                        <p class="text-xl font-black text-gray-800">{{ $stats['products_count'] }}</p>
+                <!-- Card Commandes -->
+                <div class="relative overflow-hidden bg-gradient-to-br from-blue-400 to-indigo-600 rounded-3xl p-8 shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+                    <div class="absolute -right-6 -bottom-6 text-9xl opacity-20 -rotate-12 select-none">📦</div>
+                    <div class="relative z-10 flex flex-col justify-between h-full text-white">
+                        <div>
+                            <p class="text-sm font-black uppercase tracking-widest opacity-80 mb-2">Commandes</p>
+                            <h3 class="text-5xl font-black drop-shadow-md">{{ $stats['orders_count'] }}</h3>
+                        </div>
+                        <div class="mt-6 flex items-center gap-2 opacity-90 font-bold">
+                            <span class="bg-white/20 p-2 rounded-lg">🚀 En cours de traitement</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="card-white p-6 flex items-center">
-                    <div class="p-4 bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl mr-4">
-                        <span class="text-2xl text-purple-600">👥</span>
+                <!-- Card Produits -->
+                <div class="relative overflow-hidden bg-gradient-to-br from-orange-400 to-red-500 rounded-3xl p-8 shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+                    <div class="absolute -right-6 -top-6 text-9xl opacity-20 rotate-12 select-none">🏷️</div>
+                    <div class="relative z-10 flex flex-col justify-between h-full text-white">
+                        <div>
+                            <p class="text-sm font-black uppercase tracking-widest opacity-80 mb-2">Produits en stock</p>
+                            <h3 class="text-5xl font-black drop-shadow-md">{{ $stats['products_count'] }}</h3>
+                        </div>
+                        <div class="mt-6 flex items-center gap-2 opacity-90 font-bold">
+                            <span class="bg-white/20 p-2 rounded-lg">🔥 Top ventes</span>
+                        </div>
                     </div>
-                    <div>
-                        <p class="text-xs font-bold text-gray-600 uppercase tracking-wider">Clients</p>
-                        <p class="text-xl font-black text-gray-800">{{ $stats['clients_count'] }}</p>
+                </div>
+
+                <!-- Card Clients -->
+                <div class="relative overflow-hidden bg-gradient-to-br from-purple-400 to-pink-600 rounded-3xl p-8 shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+                    <div class="absolute -left-6 -bottom-6 text-9xl opacity-20 -rotate-12 select-none">👥</div>
+                    <div class="relative z-10 flex flex-col justify-between h-full text-white">
+                        <div class="text-left">
+                            <p class="text-sm font-black uppercase tracking-widest opacity-80 mb-2">Clients Actifs</p>
+                            <h3 class="text-5xl font-black drop-shadow-md">{{ $stats['clients_count'] }}</h3>
+                        </div>
+                        <div class="mt-6 flex items-center gap-2 opacity-90 font-bold">
+                            <span class="bg-white/20 p-2 rounded-lg">❤️ Fidélité</span>
+                        </div>
                     </div>
                 </div>
 
             </div>
-
             
-                <div class="absolute -right-10 -bottom-10 opacity-20 transform rotate-12">
-                    <svg class="w-40 h-40" fill="currentColor" viewBox="0 0 20 20"><path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z"></path></svg>
-                </div>
+            <!-- Section Bienvenue Décorative -->
+            <div class="relative bg-white rounded-3xl p-8 shadow-xl border-2 border-indigo-50 overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-10 text-9xl transform translate-x-10 -translate-y-10">🌟</div>
+                <h3 class="text-2xl font-black text-gray-800 mb-2">Bon retour, {{ Auth::user()->name }} ! 👋</h3>
+                <p class="text-gray-600">Prêt à gérer votre mini-store aujourd'hui ?</p>
             </div>
 
         </div>
     </div>
 </x-app-layout>
-

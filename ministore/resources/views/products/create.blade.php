@@ -1,37 +1,56 @@
 <x-app-layout>
-    <div class="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow">
-        <h2 class="text-xl font-bold mb-4">Ajouter un Produit</h2>
+    <div class="max-w-md mx-auto mt-10 p-8 bg-white rounded-2xl shadow-xl border-2 border-purple-100 relative overflow-hidden">
+        
+        <h2 class="text-3xl font-black text-black mb-8 text-center flex items-center justify-center gap-3">
+            <span>📦</span> Ajouter un Produit
+        </h2>
 
         @if ($errors->any())
-            <div class="mb-4 p-4 bg-red-100 text-red-700 rounded border border-red-200">
+            <div class="mb-6 p-4 bg-red-100 text-red-700 rounded-xl border border-red-200 font-bold">
                 <ul class="list-disc ml-5">
                     @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                        <li>⚠️ {{ $error }}</li>
                     @endforeach
                 </ul>
             </div>
         @endif
 
-        <form action="{{ route('products.store') }}" method="POST">
+        <form action="{{ route('products.store') }}" method="POST" class="space-y-5">
             @csrf
-            <div class="mb-4">
-                <label class="block font-bold mb-1">Nom</label>
-                <input type="text" name="name" value="{{ old('name') }}" class="w-full border-gray-300 rounded" required>
+            <div>
+                <label class="block mb-2 font-black text-black text-lg flex items-center gap-2">
+                    <span>🏷️</span> Nom
+                </label>
+                <input type="text" name="name" value="{{ old('name') }}" 
+                       class="w-full border-2 border-purple-200 rounded-xl p-3 text-black font-bold focus:border-blue-500 focus:ring-4 focus:ring-purple-100 transition-all placeholder-gray-400" 
+                       required>
             </div>
             
-            <div class="mb-4">
-                <label class="block font-bold mb-1">Prix</label>
-                <input type="number" step="0.01" name="price" value="{{ old('price') }}" class="w-full border-gray-300 rounded" required>
-            </div>
-            
-            <div class="mb-4">
-                <label class="block font-bold mb-1">Quantité</label>
-                <input type="number" name="quantity" value="{{ old('quantity') }}" class="w-full border-gray-300 rounded" required>
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block mb-2 font-black text-black text-lg flex items-center gap-2">
+                        <span>💰</span> Prix
+                    </label>
+                    <input type="number" step="0.01" name="price" value="{{ old('price') }}" 
+                           class="w-full border-2 border-purple-200 rounded-xl p-3 text-black font-bold focus:border-blue-500 focus:ring-4 focus:ring-purple-100 transition-all" 
+                           required>
+                </div>
+                
+                <div>
+                    <label class="block mb-2 font-black text-black text-lg flex items-center gap-2">
+                        <span>🔢</span> Quantité
+                    </label>
+                    <input type="number" name="quantity" value="{{ old('quantity') }}" 
+                           class="w-full border-2 border-purple-200 rounded-xl p-3 text-black font-bold focus:border-blue-500 focus:ring-4 focus:ring-purple-100 transition-all" 
+                           required>
+                </div>
             </div>
 
-            <div class="mb-4">
-                <label class="block font-bold mb-1">Catégorie</label>
-                <select name="category_id" class="w-full border-gray-300 rounded">
+            <div>
+                <label class="block mb-2 font-black text-black text-lg flex items-center gap-2">
+                    <span>📂</span> Catégorie
+                </label>
+                <select name="category_id" class="w-full border-2 border-purple-200 rounded-xl p-3 text-black font-bold focus:border-blue-500 focus:ring-4 focus:ring-purple-100 transition-all bg-white">
                     @forelse($categories as $cat)
                         <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                     @empty
@@ -40,8 +59,10 @@
                 </select>
             </div>
 
-            <button type="submit" class="bg-blue-600 text-black px-4 py-2 rounded font-bold hover:bg-blue-700">
-                Créer le Produit
+            <button type="submit" 
+                    class="w-full bg-gradient-to-r from-purple-600 via-purple-500 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-black font-black py-4 rounded-xl shadow-lg transform hover:scale-[1.02] transition-all duration-200 flex justify-center items-center gap-2 text-lg">
+                <span>Créer le Produit</span>
+                <span>🚀</span>
             </button>
         </form>
     </div>
