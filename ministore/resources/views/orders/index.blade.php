@@ -38,6 +38,9 @@
                             <th class="px-6 py-5 text-center text-sm font-black uppercase tracking-wider">
                                 💰 Total
                             </th>
+                            <th class="px-6 py-5 text-center text-sm font-black uppercase tracking-wider">
+                                📊 Statut
+                            </th>
                             <th class="px-6 py-5 text-right text-sm font-black uppercase tracking-wider">
                                 ⚙️ Actions
                             </th>
@@ -62,13 +65,39 @@
                                     {{ number_format($order->total_price, 2) }} <span class="text-xs">DH</span>
                                 </span>
                             </td>
-                            <td class="px-6 py-5 whitespace-nowrap text-right">
-                                <form action="{{ route('orders.destroy', $order->id) }}" method="POST" class="inline" onsubmit="return confirm('Annuler cette commande ?')">
-                                    @csrf @method('DELETE')
-                                    <button class="bg-red-50 text-red-600 px-4 py-2 rounded-lg hover:bg-red-100 hover:scale-105 transition-all shadow-sm flex items-center gap-2 ml-auto font-bold text-xs" title="Annuler">
-                                        <span>🚫</span> Annuler
-                                    </button>
-                                </form>
+                             <td class="px-6 py-5 whitespace-nowrap text-center">
+                                <span class="px-3 py-1 rounded-full text-xs font-bold
+                                    {{ $order->status === 'en attente' ? 'bg-yellow-100 text-yellow-800' : '' }}
+                                    {{ $order->status === 'validée' ? 'bg-green-100 text-green-800' : '' }}
+                                    {{ $order->status === 'refusée' ? 'bg-red-100 text-red-800' : '' }}
+                                    {{ $order->status === 'annulée' ? 'bg-gray-100 text-gray-800' : '' }}">
+                                    {{ ucfirst($order->status) }}
+                                </span>
+                            </td>
+                            <td class="px-6 py-5 whitespace-nowrap text-right text-sm font-medium flex justify-end gap-2">
+                                @if($order->status === 'en attente')
+                                    <form action="{{ route('orders.updateStatus', $order->id) }}" method="POST" class="inline">
+                                        @csrf @method('PATCH')
+                                        <input type="hidden" name="status" value="validée">
+                                        <button class="bg-green-50 text-green-600 px-3 py-1 rounded-lg hover:bg-green-100 transition-colors shadow-sm font-bold flex items-center gap-1">
+                                            ✅ Valider
+                                        </button>
+                                    </form>
+                                    <form action="{{ route('orders.updateStatus', $order->id) }}" method="POST" class="inline">
+                                        @csrf @method('PATCH')
+                                        <input type="hidden" name="status" value="refusée">
+                                        <button class="bg-red-50 text-red-600 px-3 py-1 rounded-lg hover:bg-red-100 transition-colors shadow-sm font-bold flex items-center gap-1">
+                                            ❌ Refuser
+                                        </button>
+                                    </form>
+                                @else
+                                     <form action="{{ route('orders.destroy', $order->id) }}" method="POST" class="inline" onsubmit="return confirm('Annuler définitivement cette commande ?')">
+                                        @csrf @method('DELETE')
+                                        <button class="text-gray-400 hover:text-red-500 transition-colors" title="Supprimer">
+                                            🗑️
+                                        </button>
+                                    </form>
+                                @endif
                             </td>
                         </tr>
                         @empty

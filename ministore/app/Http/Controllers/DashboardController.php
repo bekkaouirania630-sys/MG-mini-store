@@ -12,15 +12,19 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Kan-jibu l-arqam mn l-models li 3ndek
-        $stats = [
-            'products_count'   => Product::count(),
-            'orders_count'     => Order::count(),
-            'clients_count'    => Client::count(),
-            'categories_count' => Category::count(),
-            'total_revenue'    => Order::sum('total_price'), // Hada howa l-flouss li dkhlo
-        ];
+        if (auth()->user()->is_admin) {
+            $stats = [
+                'products_count'   => Product::count(),
+                'orders_count'     => Order::count(),
+                'clients_count'    => Client::count(),
+                'categories_count' => Category::count(),
+                'total_revenue'    => Order::sum('total_price'), 
+            ];
 
-        return view('dashboard', compact('stats'));
+            return view('admin.dashboard', compact('stats'));
+        } else {
+             $products = Product::where('quantity', '>', 0)->with('category')->get();
+             return view('customer.shop', compact('products'));
+        }
     }
 }
