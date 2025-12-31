@@ -12,10 +12,13 @@
                 <label class="block mb-2 font-black text-black text-lg flex items-center gap-2">
                     <span>🏷️</span> Nom de la catégorie
                 </label>
-                <input type="text" name="name" 
-                       class="w-full border-2 border-purple-200 rounded-xl p-3 text-black font-bold focus:border-blue-500 focus:ring-4 focus:ring-purple-100 transition-all placeholder-gray-400" 
+                <input type="text" name="name" value="{{ old('name') }}"
+                       class="w-full border-2 border-purple-200 rounded-xl p-3 text-black font-bold focus:border-blue-500 focus:ring-4 focus:ring-purple-100 transition-all placeholder-gray-400 @error('name') border-red-500 @enderror" 
                        placeholder="Entrez le nom ici..."
                        required>
+                @error('name')
+                    <p class="text-red-500 text-sm mt-1 font-bold">{{ $message }}</p>
+                @enderror
             </div>
 
             <button type="submit" 

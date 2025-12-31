@@ -8,6 +8,13 @@
         <div class="max-w-5xl mx-auto sm:px-6 lg:px-8 relative z-10">
             
             <!-- Header Section -->
+            @if(session('success'))
+                <div class="mb-6 p-4 bg-green-100 border-l-4 border-green-500 text-green-700 shadow-md rounded-r-lg flex items-center gap-3">
+                    <span class="text-xl">✅</span>
+                    <p class="font-bold">{{ session('success') }}</p>
+                </div>
+            @endif
+
             <div class="flex justify-between items-center mb-8 px-4">
                 <div>
                     <h2 class="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-500">
